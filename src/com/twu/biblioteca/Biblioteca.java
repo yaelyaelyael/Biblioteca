@@ -3,9 +3,6 @@ package com.twu.biblioteca;
 import java.io.PrintStream;
 import java.util.List;
 
-/**
- * Created by dlafeir on 6/16/15.
- */
 public class Biblioteca {
     private List<Book> books;
     private PrintStream printStream;
@@ -15,9 +12,6 @@ public class Biblioteca {
         this.printStream = printStream;
     }
 
-    public void printWelcomeMessage() {
-        printStream.println("Welcome to the Biblioteca!");
-    }
 
     public void printListOfBooks() {
         String listofBooks = "";
@@ -25,9 +19,5 @@ public class Biblioteca {
             listofBooks += book.getBookDetails() + "\n";
         }
         printStream.print(listofBooks);
-    }
-
-    public void displayMenu() {
-        printStream.println("1) List Books");
     }
 }

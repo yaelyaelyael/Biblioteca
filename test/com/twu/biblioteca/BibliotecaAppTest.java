@@ -5,53 +5,41 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Scanner;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class BibliotecaAppTest {
 
     private Biblioteca biblioteca;
     private BibliotecaApp bibliotecaApp;
     private BufferedReader bufferedReader;
+    private Menu menu;
 
     @Before
     public void setUp() {
         bufferedReader = mock(BufferedReader.class);
         biblioteca = mock(Biblioteca.class);
-        bibliotecaApp = new BibliotecaApp(biblioteca, bufferedReader);
-        bibliotecaApp.run();
+        menu = mock(Menu.class);
+        bibliotecaApp = new BibliotecaApp(biblioteca, bufferedReader, menu);
     }
 
     @Test
     public void shouldDisplayWelcomeMessageOnRun(){
-        verify(biblioteca).printWelcomeMessage();
+        bibliotecaApp.run();
+        verify(menu).printWelcomeMessage();
     }
 
     @Test
-    public void shouldDisplayMenuOptionsOnRun(){
-        verify(biblioteca).displayMenu();
+    public void shouldGetUserInputAfterMenuDisplayed() {
+        bibliotecaApp.run();
+        verify(menu).readInput();
     }
 
     @Test
-    public void shouldPrintListOfBooksWhenGetUserInput() {
-        int userInput = bibliotecaApp.getUserInput();
-
-        assertThat(userInput, is(1));
+    public void shouldStopRunningWhenQuitIsSelectedFromMenu() {
+        when(menu.readInput()).thenReturn(1).thenReturn(1).thenReturn(2);
+        assertThat(bibliotecaApp.run(), is(true));
     }
-
-    @Test
-    public void shouldCallScannerWhenGettingUserinput(){
-        int userInput = bibliotecaApp.getUserInput();
-
-        try {
-            verify(bufferedReader).readLine();
-        }
-        catch (IOException e){}
-    }
-
 }

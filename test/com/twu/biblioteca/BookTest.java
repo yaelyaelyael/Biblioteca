@@ -16,6 +16,6 @@ public class BookTest {
 
         String booksToPrint = book.getBookDetails();
 
-        assertThat(booksToPrint, is("Go Dog Go : Dr. Suess : 1990"));
+        assertThat(booksToPrint, is("Go Dog Go                 Dr. Suess                 1990"));
     }
 }

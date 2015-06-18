@@ -2,9 +2,6 @@ package com.twu.biblioteca;
 
 import com.sun.deploy.util.StringUtils;
 
-/**
- * Created by dlafeir on 6/16/15.
- */
 public class Book {
     private String bookName;
     private String author;
@@ -17,10 +14,6 @@ public class Book {
     }
 
     public String getBookDetails() {
-        StringBuilder stringbuilder = new StringBuilder();
-        stringbuilder.insert(0,bookName);
-        stringbuilder.insert(20, author);
-        stringbuilder.insert(40, year);
-        return stringbuilder.toString();
+        return String.format("%-25s %-25s %s",bookName,author,year);
     }
 }

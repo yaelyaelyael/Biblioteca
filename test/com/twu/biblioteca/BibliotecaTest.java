@@ -11,9 +11,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-/**
- * Created by dlafeir on 6/16/15.
- */
 public class BibliotecaTest {
 
     List<Book> books;
@@ -59,17 +56,4 @@ public class BibliotecaTest {
 
         verify(printStream).print("Book1Details\nBook1Details\n");
     }
-
-    @Test
-    public void shouldPrintListBooksMenuOptionWhenCallingListMenu(){
-        biblioteca = new Biblioteca(books, printStream);
-
-        biblioteca.displayMenu();
-
-        verify(printStream).println("1) List Books");
-    }
-
-
-
-
 }

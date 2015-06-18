@@ -7,6 +7,40 @@ import java.util.ArrayList;
 public class BibliotecaApp {
 
     private Biblioteca biblioteca;
+    private Menu menu;
+    private BufferedReader bufferedReader;
+
+
+    BibliotecaApp(Biblioteca biblioteca, BufferedReader bufferedReader, Menu menu){
+        this.biblioteca = biblioteca;
+        this.bufferedReader = bufferedReader;
+        this.menu = menu;
+    }
+
+    public boolean run(){
+        boolean runComplete = false;
+
+        menu.printWelcomeMessage();
+
+        menu.displayMenu();
+        do {
+            runComplete = selectFromMenu();
+        }while(!runComplete);
+
+        return runComplete;
+    }
+
+    public boolean selectFromMenu() {
+        boolean runComplete = false;
+        int input =  menu.readInput();
+        if(input == 1){
+            biblioteca.printListOfBooks();
+        }
+        else if(input == 2){
+            runComplete = true;
+        }
+        return runComplete;
+    }
 
     public static void main(String[] args) {
         ArrayList<Book> books = new ArrayList<Book>();
@@ -15,19 +49,7 @@ public class BibliotecaApp {
         Biblioteca biblioteca = new Biblioteca(books, System.out);
         InputStreamReader in = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(in);
-        new BibliotecaApp(biblioteca, bufferedReader).run();
-    }
-
-    BibliotecaApp(Biblioteca biblioteca, BufferedReader bufferedReader){
-        this.biblioteca = biblioteca;
-    }
-
-    public void run(){
-        biblioteca.printWelcomeMessage();
-        biblioteca.displayMenu();
-    }
-
-    public int getUserInput() {
-        return 1;
+        Menu menu = new Menu(System.out, bufferedReader);
+        new BibliotecaApp(biblioteca, bufferedReader, menu).run();
     }
 }
