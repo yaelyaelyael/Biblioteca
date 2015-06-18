@@ -12,11 +12,11 @@ import java.util.List;
  */
 public class Menu {
 
-    private BufferedReader bufferedReader;
+    private BibliotecaBufferedReader bufferedReader;
     private PrintStream printStream;
     private List<Integer> validOptionsList = new ArrayList<Integer>();
 
-    public Menu(PrintStream printStream, BufferedReader bufferedReader) {
+    public Menu(PrintStream printStream, BibliotecaBufferedReader bufferedReader) {
         this.printStream = printStream;
         this.bufferedReader = bufferedReader;
         validOptionsList.add(1);
@@ -37,11 +37,11 @@ public class Menu {
 
             if(!validOptionsList.contains(input)){
                 input = -1;
+                printStream.println("Select a valid option!");
             }
-        } catch (IOException e) {
-            input = -1;
         } catch (NumberFormatException numFormatException) {
             input = -1;
+            printStream.println("Select a valid option!");
         }
 
         return input;

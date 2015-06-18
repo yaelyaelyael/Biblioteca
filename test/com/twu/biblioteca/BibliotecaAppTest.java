@@ -14,12 +14,12 @@ public class BibliotecaAppTest {
 
     private Biblioteca biblioteca;
     private BibliotecaApp bibliotecaApp;
-    private BufferedReader bufferedReader;
+    private BibliotecaBufferedReader bufferedReader;
     private Menu menu;
 
     @Before
     public void setUp() {
-        bufferedReader = mock(BufferedReader.class);
+        bufferedReader = mock(BibliotecaBufferedReader.class);
         biblioteca = mock(Biblioteca.class);
         menu = mock(Menu.class);
         bibliotecaApp = new BibliotecaApp(biblioteca, bufferedReader, menu);
@@ -27,12 +27,14 @@ public class BibliotecaAppTest {
 
     @Test
     public void shouldDisplayWelcomeMessageOnRun(){
+        when(menu.readInput()).thenReturn(2);
         bibliotecaApp.run();
         verify(menu).printWelcomeMessage();
     }
 
     @Test
     public void shouldGetUserInputAfterMenuDisplayed() {
+        when(menu.readInput()).thenReturn(2);
         bibliotecaApp.run();
         verify(menu).readInput();
     }

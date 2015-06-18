@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -8,10 +7,10 @@ public class BibliotecaApp {
 
     private Biblioteca biblioteca;
     private Menu menu;
-    private BufferedReader bufferedReader;
+    private BibliotecaBufferedReader bufferedReader;
 
 
-    BibliotecaApp(Biblioteca biblioteca, BufferedReader bufferedReader, Menu menu){
+    BibliotecaApp(Biblioteca biblioteca, BibliotecaBufferedReader bufferedReader, Menu menu){
         this.biblioteca = biblioteca;
         this.bufferedReader = bufferedReader;
         this.menu = menu;
@@ -48,7 +47,7 @@ public class BibliotecaApp {
         books.add(new Book("Green Eggs and Ham", "Dr Suess", "1991"));
         Biblioteca biblioteca = new Biblioteca(books, System.out);
         InputStreamReader in = new InputStreamReader(System.in);
-        BufferedReader bufferedReader = new BufferedReader(in);
+        BibliotecaBufferedReader bufferedReader = new BibliotecaBufferedReader(in);
         Menu menu = new Menu(System.out, bufferedReader);
         new BibliotecaApp(biblioteca, bufferedReader, menu).run();
     }
