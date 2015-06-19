@@ -65,4 +65,13 @@ public class MenuTest {
         menu.readInput();
         verify(printStream).println("Select a valid option!");
     }
+
+    @Test
+    public void shouldBeValidWhenMenuOptionIsThree(){
+        when(bufferedReader.readLine()).thenReturn("3");
+
+        int returnValue = menu.readInput();
+
+        assertThat(returnValue, is(3));
+    }
 }

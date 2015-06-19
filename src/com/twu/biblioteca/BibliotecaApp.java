@@ -8,7 +8,6 @@ public class BibliotecaApp {
     private Biblioteca biblioteca;
     private Menu menu;
     private BibliotecaBufferedReader bufferedReader;
-    private boolean runComplete;
 
 
     BibliotecaApp(Biblioteca biblioteca, BibliotecaBufferedReader bufferedReader, Menu menu){
@@ -18,7 +17,7 @@ public class BibliotecaApp {
     }
 
     public boolean run(){
-        runComplete = false;
+        boolean runComplete = false;
 
         menu.printWelcomeMessage();
 
@@ -31,7 +30,7 @@ public class BibliotecaApp {
     }
 
     public boolean selectFromMenu() {
-        runComplete = false;
+        boolean runComplete = false;
         int input =  menu.readInput();
         if(input == 1){
             biblioteca.printListOfBooks();

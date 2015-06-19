@@ -21,6 +21,7 @@ public class Menu {
         this.bufferedReader = bufferedReader;
         validOptionsList.add(1);
         validOptionsList.add(2);
+        validOptionsList.add(3);
     }
 
     public void displayMenu() {

@@ -53,4 +53,5 @@ public class BibliotecaAppTest {
 
         verify(biblioteca).checkoutBook();
     }
+
 }
