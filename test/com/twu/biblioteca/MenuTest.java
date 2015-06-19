@@ -36,7 +36,8 @@ public class MenuTest {
     public void shouldDisplayMenu() {
         menu.displayMenu();
         verify(printStream).println("1) List Books");
-        verify(printStream).println("2) Quit");
+        verify(printStream).println("2) Checkout book");
+        verify(printStream).println("3) Quit");
     }
 
     @Test

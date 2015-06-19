@@ -25,7 +25,8 @@ public class Menu {
 
     public void displayMenu() {
         printStream.println("1) List Books");
-        printStream.println("2) Quit");
+        printStream.println("2) Checkout book");
+        printStream.println("3) Quit");
     }
 
     public int readInput(){

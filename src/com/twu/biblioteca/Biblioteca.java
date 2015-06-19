@@ -12,12 +12,15 @@ public class Biblioteca {
         this.printStream = printStream;
     }
 
-
     public void printListOfBooks() {
         String listofBooks = "";
         for (Book book : books) {
             listofBooks += book.getBookDetails() + "\n";
         }
         printStream.print(listofBooks);
+    }
+
+    public void checkoutBook() {
+        printStream.print("Choose a book to checkout");
     }
 }

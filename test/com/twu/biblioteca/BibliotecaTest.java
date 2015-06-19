@@ -56,4 +56,14 @@ public class BibliotecaTest {
 
         verify(printStream).print("Book1Details\nBook1Details\n");
     }
+
+    @Test
+    public void shouldListBooksToCheckOutWhenCheckingOut(){
+        biblioteca = new Biblioteca(books, printStream);
+
+        biblioteca.checkoutBook();
+
+        verify(printStream).print("Choose a book to checkout");
+    }
+
 }

@@ -27,21 +27,30 @@ public class BibliotecaAppTest {
 
     @Test
     public void shouldDisplayWelcomeMessageOnRun(){
-        when(menu.readInput()).thenReturn(2);
+        when(menu.readInput()).thenReturn(3);
         bibliotecaApp.run();
         verify(menu).printWelcomeMessage();
     }
 
     @Test
     public void shouldGetUserInputAfterMenuDisplayed() {
-        when(menu.readInput()).thenReturn(2);
+        when(menu.readInput()).thenReturn(3);
         bibliotecaApp.run();
         verify(menu).readInput();
     }
 
     @Test
     public void shouldStopRunningWhenQuitIsSelectedFromMenu() {
-        when(menu.readInput()).thenReturn(1).thenReturn(1).thenReturn(2);
+        when(menu.readInput()).thenReturn(1).thenReturn(1).thenReturn(3);
         assertThat(bibliotecaApp.run(), is(true));
+    }
+
+    @Test
+    public void shouldCallCheckOutBookOnBibliotecaWhenOptionTwoIsChosen(){
+        when(menu.readInput()).thenReturn(2).thenReturn(3);
+
+        bibliotecaApp.selectFromMenu();
+
+        verify(biblioteca).checkoutBook();
     }
 }
